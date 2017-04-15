@@ -36,13 +36,11 @@ void loop() {
   display.setTextSize(2);
   cm=int(sonar.ping_cm());
   barlength=round((cm * 84) / 350);
+  //Hier noch if rein, wenn 0 dann outof range, wenn <25 dann under range
   display.setCursor(0,13); display.print(cm); display.println(" cm");// Send ping, get distance in cm and print result (0 = outside set distance range)
   
   display.drawRect(0, 35, barlength, 2, BLACK);
   display.drawRect(0, 37, barlength, 2, BLACK);
   display.display();
   
-//  Serial.print("Ping: ");
-//  Serial.print(sonar.ping_cm()); // Send ping, get distance in cm and print result (0 = outside set distance range)
-//  Serial.println("cm");
 }
