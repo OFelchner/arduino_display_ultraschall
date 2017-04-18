@@ -44,7 +44,7 @@ void setup() {
 }
 
 void loop() {
-  delay(1000);                     // Wait between pings. 29ms should be the shortest delay between pings.
+  delay(5);                     // Wait between pings. 29ms should be the shortest delay between pings.
   display.clearDisplay();
   display.drawRect(0, 36, 1 ,4, BLACK);
   display.drawRect(42, 36, 1 ,2, BLACK);
@@ -64,7 +64,8 @@ void loop() {
   }
 
   display.setTextSize(2);
-  cm=int(sonar.ping_cm());
+ // cm=int(sonar.ping_cm());
+  cm = NewPing::convert_cm(sonar.ping_median(10));
   if (cm <= 25) {
     display.setCursor(0,12); display.println("Range!");
     barlength = 0;
